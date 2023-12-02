@@ -1,6 +1,8 @@
 # rocky-performance
 Part of the 'On Rocky' series. This implementation takes PROMETHEUS monitoring, GFAFANA visualization and JMETER load in to one all inclusive approach to implmenting a Performance Engineering solution that includes Load and monitoring of systems under test. 
 
+A **docker-compose.yaml** is part of this repository for your convience or you may exeucte the following steps outide of Compose. 
+
 ## Lets runs some tests
 Now we have PROMETHEUS for monitoring, GRAFANA for vistualizations and INFLUXDB for Integration with other apps like Jmeter. 
 
