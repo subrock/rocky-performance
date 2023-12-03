@@ -1,0 +1,63 @@
+version: "3"
+services:
+  controller:
+    tty: true
+    container_name: CONTROLLER
+    hostname: CONTROLLER
+    image: subrock/rocky-jmeter:controller
+    restart: unless-stopped
+    command: "/bin/bash"
+    networks:
+      - performance-network
+  worker-1:
+    tty: true
+    container_name: WORKER-1
+    hostname: WORKER-1
+    image: subrock/rocky-jmeter:worker
+    restart: unless-stopped
+    command: "/bin/bash"
+    networks:
+      - performance-network
+
+  PROMETHEUS:
+    tty: true
+    container_name: PROMETHEUS
+    hostname: PROMETHEUS
+    image: subrock/rocky-prometheus
+    restart: unless-stopped
+    command: "/bin/bash"
+    ports:
+      - "9090:9090"
+      - "9100:9100"
+      - "9115:9115"
+    networks:
+      - performance-network
+  GRAFANA:
+    tty: true
+    container_name: GRAFANA
+    hostname: GRAFANA
+    image: subrock/rocky-grafana
+    restart: unless-stopped
+    command: "/bin/bash"
+    ports:
+      - "9091:3000"
+    networks:
+      - performance-network
+  INFLUXDB:
+    tty: true
+    container_name: INFLUXDB
+    hostname: INFLUXDB
+    image: subrock/rocky-influxdb
+    restart: unless-stopped
+    command: "/bin/bash"
+    ports:
+      - "8086:8086"
+    networks:
+      - performance-network
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin
+
+networks:
+  performance-network:
