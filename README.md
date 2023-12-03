@@ -12,9 +12,6 @@ docker run -d --name PROMETHEUS --hostname PROMETHEUS -p 9090:9090 --network pro
 docker run -d --name GRAFANA --hostname GRAFANA -p 9091:3000 --network prometheus-network -t subrock/rocky-grafana
 docker run -d --name INFLUXDB --hostname INFLUXDB -p 8086:8086 -e DOCKER_INFLUXDB_INIT_MODE=setup -e DOCKER_INFLUXDB_INIT_USERNAME=admin -e DOCKER_INFLUXDB_INIT_PASSWORD=admin --network prometheus-network -t subrock/rocky-influxdb
 ```
-```
-docker exec -it INFLUXDB influx -execute 'create database jmeter'
-```
 Lets start JMETER.
 ```
 docker run --name CONTROLLER --hostname CONTROLLER --network prometheus-network -d -t subrock/rocky-jmeter:controller
