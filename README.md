@@ -8,14 +8,14 @@ Now we have PROMETHEUS for monitoring, GRAFANA for vistualizations and INFLUXDB 
 
 ```
 docker network create --driver bridge prometheus-network
-docker run -d --name PROMETHEUS --hostname PROMETHEUS -p 9090:9090 --network prometheus-network -t subrock/rocky-prometheus
-docker run -d --name GRAFANA --hostname GRAFANA -p 9091:3000 --network prometheus-network -t subrock/rocky-grafana
-docker run -d --name INFLUXDB --hostname INFLUXDB -p 8086:8086 -e DOCKER_INFLUXDB_INIT_MODE=setup -e DOCKER_INFLUXDB_INIT_USERNAME=admin -e DOCKER_INFLUXDB_INIT_PASSWORD=admin --network prometheus-network -t subrock/rocky-influxdb
+docker run -d --name PROMETHEUS --hostname PROMETHEUS -p 9090:9090 --network performance-network -t subrock/rocky-prometheus
+docker run -d --name GRAFANA --hostname GRAFANA -p 9091:3000 --network performance-network -t subrock/rocky-grafana
+docker run -d --name INFLUXDB --hostname INFLUXDB -p 8086:8086 -e DOCKER_INFLUXDB_INIT_MODE=setup -e DOCKER_INFLUXDB_INIT_USERNAME=admin -e DOCKER_INFLUXDB_INIT_PASSWORD=admin --network performance-network -t subrock/rocky-influxdb
 ```
 Lets start JMETER.
 ```
-docker run --name CONTROLLER --hostname CONTROLLER --network prometheus-network -d -t subrock/rocky-jmeter:controller
-docker run --name WORKER-1 --hostname WORKER-1 --network prometheus-network -d -t subrock/rocky-jmeter:worker
+docker run --name CONTROLLER --hostname CONTROLLER --network performance-network -d -t subrock/rocky-jmeter:controller
+docker run --name WORKER-1 --hostname WORKER-1 --network performance-network -d -t subrock/rocky-jmeter:worker
 ```
 Optionally, start Node Exporter on INFLUXDB. 
 ```
