@@ -7,7 +7,7 @@ A **docker-compose.yaml** is part of this repository for your convience or you m
 Now we have PROMETHEUS for monitoring, GRAFANA for vistualizations and INFLUXDB for Integration with other apps like Jmeter. 
 
 ```
-docker network create --driver bridge prometheus-network
+docker network create --driver bridge performance-network
 docker run -d --name PROMETHEUS --hostname PROMETHEUS -p 9090:9090 --network performance-network -t subrock/rocky-prometheus
 docker run -d --name GRAFANA --hostname GRAFANA -p 9091:3000 --network performance-network -t subrock/rocky-grafana
 docker run -d --name INFLUXDB --hostname INFLUXDB -p 8086:8086 -e DOCKER_INFLUXDB_INIT_MODE=setup -e DOCKER_INFLUXDB_INIT_USERNAME=admin -e DOCKER_INFLUXDB_INIT_PASSWORD=admin --network performance-network -t subrock/rocky-influxdb
