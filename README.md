@@ -17,10 +17,6 @@ Lets start JMETER.
 docker run --name CONTROLLER --hostname CONTROLLER --network performance-network -d -t subrock/rocky-jmeter:controller
 docker run --name WORKER-1 --hostname WORKER-1 --network performance-network -d -t subrock/rocky-jmeter:worker
 ```
-Optionally, start Node Exporter on INFLUXDB. 
-```
-docker exec -it INFLUXDB /start_node.sh
-```
 Wait a good 2 minutes for Exporters to sync. Go to Grafana and click on the Jmeter dashboard. (http://localhost:9091) Then run tests using Jmeter GUI or distributed cluster. You should see test execution results in real-time. 
 ```
 docker exec -it CONTROLLER /usr/local/bin/rocky-jmeter-run install_test_script.jmx
