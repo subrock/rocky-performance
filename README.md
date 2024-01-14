@@ -1,6 +1,9 @@
 # rocky-performance
 Part of the 'On Rocky' series. This implementation takes PROMETHEUS monitoring, GFAFANA visualization and JMETER load in to one all inclusive approach to implmenting a Performance Engineering solution that includes Load and monitoring of systems under test. 
 
+[![Load Test in 5 Minutes](https://img.youtube.com/vi/dTrLdkPz3OU/0.jpg)](https://www.youtube.com/watch?v=dTrLdkPz3OU)
+
+
 A **docker-compose.yaml** is part of this repository for your convience or you may exeucte the following steps outide of Compose. 
 
 ## Lets runs some tests
